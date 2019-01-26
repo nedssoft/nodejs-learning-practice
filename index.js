@@ -4,7 +4,7 @@ import router from './todo/routes/app'
 import fs from 'fs'
 import hbs from 'hbs'
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 const app = express()
 
 hbs.registerPartials(__dirname + '/todo/views/partials')
@@ -27,7 +27,7 @@ app.use((req, res, next) =>{
     return next()
 })
 app.use(router)
-app.listen(process.env.PORT || PORT, ()=>{
+app.listen(PORT, ()=>{
 console.log(`yay the server is running on port ${PORT}`)
 })
 
